@@ -60,7 +60,7 @@ else:
                             options = ['Indonesia', 'English'])
     with col3c:
         opt5 = st.selectbox(label = '**Choose Year**',
-                            options = ['2020', 'All']) #set(list(year2) + ['All'])
+                            options = ['All', '2020', '2021', '2022', '2023-present']) #set(list(year2) + ['All'])
         
     with open('data/LDA_{}_{}.html'.format(opt4, opt5), 'r') as file:
         html_lda = file.read()
