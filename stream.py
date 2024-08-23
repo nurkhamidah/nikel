@@ -4,7 +4,7 @@ from streamlit import components
 from data import *
 
 st.set_page_config(
-    page_title="Nur Khamidah",
+    page_title="Streamlit Dashboard for Nickel Research",
     page_icon="💖",
     layout='wide',
 )
@@ -60,9 +60,12 @@ else:
                             options = ['Indonesia', 'English'])
     with col3c:
         opt5 = st.selectbox(label = '**Choose Year**',
-                            options = year)
+                            options = ['2020', 'All']) #set(list(year2) + ['All'])
         
-    with open('data/indo_all.html', 'r') as file:
+    with open('data/LDA_{}_{}.html'.format(opt4, opt5), 'r') as file:
         html_lda = file.read()
-        
-    components.v1.html(html_lda, width=2000, height=1500, scrolling=True)
+    
+    col4a, col4b, col4c = st.columns([1,7,1], gap = 'small')
+    with col4b:    
+        st.header('Topic Modeling for {} Articles in {} Time'.format(opt4, opt5))
+        components.v1.html(html_lda, width=2000, height=1500, scrolling=True)
